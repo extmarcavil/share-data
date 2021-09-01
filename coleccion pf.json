@@ -1,0 +1,534 @@
+{
+	"info": {
+		"_postman_id": "f3506b26-1539-4eec-b676-4ac67ab68553",
+		"name": "New Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "login",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "{{tokenfury}}",
+						"description": "vence en 12 horas, 13:00 inicio",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://{{urlapp}}/api/v1/auth?password=1234&username=admin",
+					"protocol": "http",
+					"host": [
+						"{{urlapp}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"auth"
+					],
+					"query": [
+						{
+							"key": "X-Auth-Token",
+							"value": "{{tokenfury}}\n",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "1234"
+						},
+						{
+							"key": "username",
+							"value": "admin"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Req1 - 1",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{tokenapp}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "{{tokenfury}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"inboundOrder\":{\n    \"orderNumber\": 15,\n    \"orderDate\": \"2019-01-01\",\n    \"section\": {\n      \"sectionCode\": \"FS\",\n      \"warehouseCode\": \"WAREHOUSE-01\"\n    },\n    \"batchStock\":[\n      {\n        \"batchNumber\": 2,\n        \"productId\": \"Banana\",\n        \"currentTemperature\": 20,\n        \"minimumTemperature\": 10,\n        \"initialQuantity\": 5,\n        \"currentQuantity\": 5,\n        \"manufacturingDate\": \"2019-01-10\",\n        \"manufacturingTime\": \"2016-01-25T21:34:55\",\n        \"dueDate\": \"2022-01-10\"\n      },\n      {\n        \"batchNumber\": 3,\n        \"productId\": \"Fresa\",\n        \"currentTemperature\": 20,\n        \"minimumTemperature\": 10,\n        \"initialQuantity\": 5,\n        \"currentQuantity\": 5,\n        \"manufacturingDate\": \"2019-01-10\",\n        \"manufacturingTime\": \"2016-01-25T21:34:55\",\n        \"dueDate\": \"2022-01-10\"\n      }\n    ]\n  }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{urlapp}}/api/v1/fresh-products/inboundorder/",
+					"protocol": "http",
+					"host": [
+						"{{urlapp}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"fresh-products",
+						"inboundorder",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Req2 - 1",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{tokenapp}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "{{tokenfury}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://{{urlapp}}/api/v1/fresh-products/",
+					"protocol": "http",
+					"host": [
+						"{{urlapp}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"fresh-products",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Req2 - 2",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{tokenapp}}",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "{{tokenapp}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "{{tokenfury}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://{{urlapp}}/api/v1/fresh-products/list?category=FF",
+					"protocol": "http",
+					"host": [
+						"{{urlapp}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"fresh-products",
+						"list"
+					],
+					"query": [
+						{
+							"key": "category",
+							"value": "FF"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Req2 - 3",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.globals.get(\"variable_key\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{tokenapp}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "{{tokenfury}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "// {\n//     \"purchaseOrder\": {\n//         \"date\": \"2021-06-06\",\n//         \"buyerId\": \"5\",\n//         \"orderStatus\":{\n//             \"statusCode\": \"Carrito\"\n//         },\n//         \"products\": [\n//             {\n//                 \"productId\": \"Fresa\",  \n//                 \"quantity\": 20\n//             },\n//             {\n//                 \"productId\": \"Banana\",  \n//                 \"quantity\": 50\n//             },\n//                         {\n//                 \"productId\": \"Manteca\",  \n//                 \"quantity\": 100\n//             }\n//         ] \n//     }\n// }\n{\n  \"purchaseOrder\" : {\n    \"date\" : [ 2021, 6, 6 ],\n    \"buyerId\" : \"5\",\n    \"orderStatus\" : {\n      \"statusCode\" : \"Carrito\"\n    },\n    \"products\" : [ {\n      \"productId\" : \"Fresa\",\n      \"quantity\" : 2,\n      \"detail\" : null\n    }, {\n      \"productId\" : \"Banana\",\n      \"quantity\" : 5,\n      \"detail\" : null\n    } ]\n  }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{urlapp}}/api/v1/fresh-products/orders/",
+					"protocol": "http",
+					"host": [
+						"{{urlapp}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"fresh-products",
+						"orders",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Req2 - 4",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{tokenapp}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "{{tokenfury}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://{{urlapp}}/api/v1/fresh-products/orders/?idOrder=1",
+					"protocol": "http",
+					"host": [
+						"{{urlapp}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"fresh-products",
+						"orders",
+						""
+					],
+					"query": [
+						{
+							"key": "idOrder",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Req2 - 5",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{tokenapp}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "{{tokenfury}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"purchaseOrder\": {\n        \"date\": \"2021-06-06\",\n        \"buyerId\": \"5\",\n        \"orderStatus\":{\n            \"statusCode\": \"Carrito\"\n        },\n        \"products\": [\n            {\n                \"productId\": \"Fresa\",  \n                \"quantity\": 10\n            },\n            {\n                \"productId\": \"Banana\",  \n                \"quantity\": 50\n            },\n                        {\n                \"productId\": \"Manteca\",  \n                \"quantity\": 100\n            }\n        ] \n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{urlapp}}/api/v1/fresh-products/orders/?idOrder=1",
+					"protocol": "http",
+					"host": [
+						"{{urlapp}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"fresh-products",
+						"orders",
+						""
+					],
+					"query": [
+						{
+							"key": "idOrder",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Req3 - 1",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{tokenapp}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "{{tokenfury}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://{{urlapp}}/api/v1/fresh-products/batch/list?idProduct=Fresa&order=C",
+					"protocol": "https",
+					"host": [
+						"{{urlapp}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"fresh-products",
+						"batch",
+						"list"
+					],
+					"query": [
+						{
+							"key": "idProduct",
+							"value": "Fresa"
+						},
+						{
+							"key": "order",
+							"value": "C"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Req4 - 1",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{tokenapp}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "{{tokenfury}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://{{urlapp}}/api/v1/fresh-products/warehouse?idProduct=Banana",
+					"protocol": "https",
+					"host": [
+						"{{urlapp}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"fresh-products",
+						"warehouse"
+					],
+					"query": [
+						{
+							"key": "idProduct",
+							"value": "Banana"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Req5 - 1",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{tokenapp}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "{{tokenfury}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://{{urlapp}}/api/v1/fresh-products/due-date/?days=20",
+					"protocol": "https",
+					"host": [
+						"{{urlapp}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"fresh-products",
+						"due-date",
+						""
+					],
+					"query": [
+						{
+							"key": "days",
+							"value": "20"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Req5 - 2",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{tokenapp}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "{{tokenfury}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://{{urlapp}}/api/v1/fresh-products/due-date/list?days=20&order=asc&category=FS",
+					"protocol": "https",
+					"host": [
+						"{{urlapp}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"fresh-products",
+						"due-date",
+						"list"
+					],
+					"query": [
+						{
+							"key": "days",
+							"value": "20"
+						},
+						{
+							"key": "order",
+							"value": "asc"
+						},
+						{
+							"key": "category",
+							"value": "FS"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
