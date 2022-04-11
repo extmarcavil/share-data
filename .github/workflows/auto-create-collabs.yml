@@ -13,7 +13,7 @@ jobs:
         uses: kbrashears5/github-action-auto-create-collabs@v1.0.0
         with:
           REPOSITORIES: |
-            extmarcavil/share-data
+            extmarcavil/share-data@master
           USERS: | 
             AvilaMarco
           TOKEN: ${{ secrets.GITHUB_TOKEN }}
