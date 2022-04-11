@@ -7,13 +7,11 @@ jobs:
   file_sync:
     runs-on: ubuntu-latest
     steps:
-      - name: Fetching Local Repository
-        uses: actions/checkout@master
       - name: Auto Create Collabs
         uses: kbrashears5/github-action-auto-create-collabs@v1.0.0
         with:
           REPOSITORIES: |
-            extmarcavil/share-data@master
+            extmarcavil/share-data
           USERS: | 
             AvilaMarco
           TOKEN: ${{ secrets.TOKEN }}
