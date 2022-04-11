@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Auto Create Collabs
-        uses: kbrashears5/github-action-auto-create-collabs@v1.0.0
+        uses: kbrashears5/github-action-auto-create-collabs@v1.0.1
         with:
           REPOSITORIES: |
             extmarcavil/share-data
