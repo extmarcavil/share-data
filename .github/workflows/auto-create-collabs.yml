@@ -14,4 +14,4 @@ jobs:
             extmarcavil/share-data
           USERS: | 
             AvilaMarco
-          TOKEN: ${{ secrets.TOKEN }}
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
