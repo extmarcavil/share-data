@@ -1,0 +1,17 @@
+name: Auto Create Collabs
+
+on:
+ workflow_dispatch:
+
+jobs:
+  file_sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Auto Create Collabs
+        uses: kbrashears5/github-action-auto-create-collabs@v1.0.0
+        with:
+          REPOSITORIES: |
+            extmarcavil/share-data
+          USERS: | 
+            [ AvilaMarco ]
+          TOKEN: ${{ secrets.ACTIONS }}
